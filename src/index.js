@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const bodyParser = require ('body-parser');
 
 const app = express();
 app.use(express.json());
@@ -14,11 +13,19 @@ const Film = mongoose.model('Film', {
 
 });
 
+//lista todu de todos
 app.get("/", async (req, res) => {
   const films = await Film.find();
   return res.send(films);
 });
 
+// lista tudo do id 
+app.get("/:id", async(req, res) => {
+  const film = await Film.findById(req.params.id);
+  return res.send(film);
+});
+
+// atualiza pelo id 
 app.put("/:id", async(req, res) => {
   const film = await Film.findByIdAndUpdate(req.params.id, {
     title: req.body.title,
@@ -29,13 +36,15 @@ app.put("/:id", async(req, res) => {
     new: true
   });
   return res.send(film);
-})
+});
 
+// deleta pelo id
 app.delete("/:id", async(req, res) => {
   const film = await Film.findByIdAndDelete(req.params.id);
   return res.send(film);
 });
 
+// adiciona filme
 app.post('/', async (req, res) => {
   const film = new Film({
     title: req.body.title,
@@ -47,9 +56,6 @@ app.post('/', async (req, res) => {
   await film.save();
   return res.send(film);
 });
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(port, () => {
   mongoose.connect('mongodb+srv://joaopaulloss477:HHGZJthzpc1CqqDZ@api-filme.phxktmk.mongodb.net/?retryWrites=true&w=majority');
