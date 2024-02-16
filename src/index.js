@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 // const bodyParser = require ('body-parser');
 
 const app = express();
+app.use(express.json());
 const port = 3000; 
-mongoose.connect('mongodb+srv://joaopaulloss477:HHGZJthzpc1CqqDZ@api-filme.phxktmk.mongodb.net/?retryWrites=true&w=majority');
 
 const Film = mongoose.model('Film', {
   title: String, 
@@ -14,8 +14,26 @@ const Film = mongoose.model('Film', {
 
 });
 
-app.get("/", (req, res) => {
-  res.send("oi");
+app.get("/", async (req, res) => {
+  const films = await Film.find();
+  return res.send(films);
+});
+
+app.put("/:id", async(req, res) => {
+  const film = await Film.findByIdAndUpdate(req.params.id, {
+    title: req.body.title,
+    description: req.body.description,
+    image_url: req.body.image_url,
+    Trailer_url: req.body.Trailer_url
+  }, {
+    new: true
+  });
+  return res.send(film);
+})
+
+app.delete("/:id", async(req, res) => {
+  const film = await Film.findByIdAndDelete(req.params.id);
+  return res.send(film);
 });
 
 app.post('/', async (req, res) => {
@@ -27,12 +45,13 @@ app.post('/', async (req, res) => {
   });
 
   await film.save();
-  res.send(film);
+  return res.send(film);
 });
 
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(port, () => {
+  mongoose.connect('mongodb+srv://joaopaulloss477:HHGZJthzpc1CqqDZ@api-filme.phxktmk.mongodb.net/?retryWrites=true&w=majority');
   console.log('rodou');
 });
