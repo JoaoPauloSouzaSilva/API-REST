@@ -44,7 +44,7 @@ app.delete("/:id", async(req, res) => {
   return res.send(film);
 });
 
-// adiciona filme
+// adiciona filme.
 app.post('/', async (req, res) => {
   const film = new Film({
     title: req.body.title,
