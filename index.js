@@ -13,6 +13,10 @@ const Film = mongoose.model('Film', {
 
 });
 
+app.get('/', (req, res) => {
+  res.status(200).json({msg: 'Bem vindo a API! By: João Paulo'})
+})
+
 //lista todu de todos
 app.get("/list", async (req, res) => {
   const films = await Film.find();
