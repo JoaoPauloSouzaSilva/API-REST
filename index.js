@@ -45,7 +45,7 @@ app.delete("/delete/:id", async(req, res) => {
 });
 
 // adiciona filme.
-app.post('/add', async (req, res) => {
+app.post('/create', async (req, res) => {
   const film = new Film({
     title: req.body.title,
     description: req.body.description,
@@ -59,5 +59,5 @@ app.post('/add', async (req, res) => {
 
 app.listen(port, () => {
   mongoose.connect('mongodb+srv://joaopaulloss477:HHGZJthzpc1CqqDZ@api-filme.phxktmk.mongodb.net/?retryWrites=true&w=majority');
-  console.log('rodou');
+  console.log('Servidor Rodando');
 });
