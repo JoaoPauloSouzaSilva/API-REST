@@ -45,11 +45,16 @@ Para gerenciar as informações da API em um banco de dados, foi adotada a tecno
 A estrutura do banco de dados ficou com os seguintes campos: 
 
 
-**ID** Campo de String que identifica o conjunto de dados, seu valor é gerado automaticamente 
+**ID** Campo de String que identifica o conjunto de dados, seu valor é gerado automaticamente
+
 **TÍTULO**  Campo de String que mostra o título do filme.
+
 **DESCRIÇÃO**  Campo de String que mostra a descrição do filme.
+
 **URL IMAGEM** Campo de String que mostra a url da capa do filme.
+
 **URL TRAILER** Campo de String que mostra a url do vídeo do trailer do filme.
+
 **VERSÃO** Campo de Number que identifica a versão. 
 
 Com os campos preenchidos fica da seguinte forma: 
