@@ -247,3 +247,5 @@ Url: `https://api-rest-u612.onrender.com/`
 ```
 **IMPORTANTE**O JWT (JSON Web Token), um padrão da Internet para a criação de tokens com assinatura opcional e/ou criptografia, cujo payload contém o JSON que afirma um conjunto de declarações. Esse token é utilizado para autenticação e autorização nas requisições à API, garantindo a segurança e integridade dos dados transmitidos.
 Devido a problemas encontrados durante os testes e à dificuldade de compreensão, o uso do JWT não foi adotado na versão final da API, apesar de ter sido desenvolvido inicialmente, como pode ser verificado no arquivo e texto JWB.txt.
+
+
