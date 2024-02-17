@@ -14,19 +14,19 @@ const Film = mongoose.model('Film', {
 });
 
 //lista todu de todos
-app.get("/", async (req, res) => {
+app.get("/list", async (req, res) => {
   const films = await Film.find();
   return res.send(films);
 });
 
 // lista tudo do id 
-app.get("/:id", async(req, res) => {
+app.get("/list/:id", async(req, res) => {
   const film = await Film.findById(req.params.id);
   return res.send(film);
 });
 
 // atualiza pelo id 
-app.put("/:id", async(req, res) => {
+app.put("/update/:id", async(req, res) => {
   const film = await Film.findByIdAndUpdate(req.params.id, {
     title: req.body.title,
     description: req.body.description,
@@ -39,13 +39,13 @@ app.put("/:id", async(req, res) => {
 });
 
 // deleta pelo id
-app.delete("/:id", async(req, res) => {
+app.delete("/delete/:id", async(req, res) => {
   const film = await Film.findByIdAndDelete(req.params.id);
   return res.send(film);
 });
 
 // adiciona filme.
-app.post('/', async (req, res) => {
+app.post('/add', async (req, res) => {
   const film = new Film({
     title: req.body.title,
     description: req.body.description,
